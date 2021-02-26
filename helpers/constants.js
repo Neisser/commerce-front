@@ -1,4 +1,4 @@
 export const language = [
-  {key: 'en-US', value: 'English'},
+  {key: 'en', value: 'English'},
   {key: 'es', value: 'Spanish'}
 ];

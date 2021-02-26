@@ -1,27 +1,17 @@
-import { useRouter } from 'next/router';
-import { language } from '../helpers/constants'
+import React, { useEffect } from "react";
+import { setDataFromLocal, getDataFromLocal, Collections, language, LanguageEnum } from '../helpers';
 
 export default function Home(props) {
-  const router = useRouter();
-  const { lang: { home } } = props;
-  /**
-   * 
-   * @param {value} param0 get language value to generate content about your chooice
-   */
-  const changeLang = ({target: {value}}) => {
-    const lang = value;
-    router.push(router.pathname, router.pathname, {
-      locale: lang
-    })
-  }
+  // DECLARATIONS
+  const { languageObject: { home }, locale } = props 
+
+  // HOOKS
+  useEffect(() => {
+    setDataFromLocal(Collections.SETTINGS, { lan: locale });
+  }, [])
 
   return (
     <>
-      <select onChange={changeLang}>
-        {
-          language.map(({key, value}, index) => (<option key={index} value={key}>{value}</option>))
-        }
-      </select>
       <article className="sm:grid grid-cols-5 bg-white shadow-sm p-7 relative lg:max-w-2xl sm:p-4 rounded-lg lg:col-span-2 lg:ml-20">
         <div className="text-red-500">{home.title}</div>
       </article>
@@ -29,15 +19,23 @@ export default function Home(props) {
   )
 }
 
+
 /**
  * 
- * @param {locale} param0 Get value locale from props when the page is loaded
+ * @param {locale} param0 Get value locale from props when the page is loaded static.
  */
-export async function getStaticProps({locale}) {
-  const response = await import(`../assets/lang/${locale}.json`);
+export async function getStaticProps ({locale}) {
+  console.log(locale);
+  // const data = getDataFromLocal(Collections.SETTINGS);
+  const findLanguage = language.find(language => language.key === locale);
+  const _locale = findLanguage.key ?? LanguageEnum.ES
+  const response = await import(`../assets/lang/${_locale}.json`);
   return {
-    props:{
-      lang: response.default.section
-    }
-  }
+      props:{
+        languageObject: response.default.section,
+        locale: _locale,
+        darkMode: true
+      }
+  };
 }
+
