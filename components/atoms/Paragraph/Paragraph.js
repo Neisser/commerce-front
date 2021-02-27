@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Paragraph.module.css';
 import { options } from './constants';
-import withStyles from '../../../hocs/withStyles';
+import withStyles from 'hocs/withStyles';
 
 export const Paragraph = ({
   getStyles,
