@@ -1,0 +1,55 @@
+.button {
+  @apply inline-flex w-full items-center justify-items-center cursor-pointer;
+  min-width: max-content;
+  height: 45px;
+  padding: 10px 20px;
+  border: var(--border-width-thin) solid var(--color-base-transparent);
+  border-radius: var(--button-border-radius-lg);
+  box-shadow: var(--box-shadow-sm);
+  cursor: pointer;
+  transition: filter 0.5s ease, box-shadow 0.2s ease-in;
+}
+
+.button:focus {
+  box-shadow: 0 0 0 1px var(--color-primary), 0 0 10px 0 var(--color-primary);
+  outline: none;
+}
+
+.button:hover {
+  filter: brightness(1.1);
+}
+
+.button:active {
+  box-shadow: var(--box-shadow-xs);
+  filter: brightness(0.9);
+}
+
+.type-primary {
+  @apply bg-black;
+}
+
+.type-primary:focus {
+  box-shadow: 0 0 0 1px var(--color-primary-inverted),
+    0 0 10px 0 var(--color-primary);
+}
+
+.type-secondary {
+  @apply bg-transparent border-4 border-solid border-black;
+}
+
+.type-tertiary {
+  @apply bg-transparent rounded-none border-2 border-solid border-black shadow-none p-0;
+  height: 25px;
+}
+
+.type-tertiary:focus {
+  @apply shadow-md text-black;
+}
+
+.button.is-inline {
+  max-width: max-content;
+}
+
+.is-muted {
+  @apply bg-gray-200;
+}

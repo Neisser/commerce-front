@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/styles/styles.module.css';
 
 const getStyles = ({ __sb } = {}) => ({
   display: 'flex',
