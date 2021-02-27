@@ -12,21 +12,17 @@ export const Paragraph = ({
   isStriked,
   isInline,
 }) => {
-  return (
-    <div
-      className={getStyles(
-        className,
-        'paragraph',
-        ['color', 'size', 'weight'],
-        {
-          'is-striked': isStriked,
-          'is-inline': isInline,
-        }
-      )}
-    >
-      {children}
-    </div>
+  const classes = getStyles(
+    className,
+    'paragraph',
+    ['color', 'size', 'weight'],
+    {
+      'is-striked': isStriked,
+      'is-inline': isInline,
+    }
   );
+
+  return <div className={classes}>{children}</div>;
 };
 
 Paragraph.propTypes = {
