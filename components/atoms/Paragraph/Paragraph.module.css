@@ -1,0 +1,43 @@
+.paragraph {
+  width: 100%;
+}
+
+.color-base {
+  @apply text-black;
+}
+
+.color-inverted {
+  @apply text-white;
+}
+
+.color-muted {
+  @apply text-gray-300;
+}
+
+.size-sm {
+  @apply text-xs;
+}
+
+.size-md {
+  @apply text-sm;
+}
+
+.size-lg {
+  @apply text-base;
+}
+
+.weight-normal {
+  @apply font-normal;
+}
+
+.weight-medium {
+  @apply font-medium;
+}
+
+.is-striked {
+  @apply line-through;
+}
+
+.is-inline {
+  @apply w-auto;
+}
