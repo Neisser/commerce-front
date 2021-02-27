@@ -4,7 +4,10 @@
     "paths": {
       "@/*": ["components/*"],
       "atoms/*": ["components/atoms/*"],
-      "molecules/*": ["components/molecules/*"]
+      "molecules/*": ["components/molecules/*"],
+      "pages/*": ["pages/*"],
+      "hocs/*": ["hocs/*"],
+      "helpers/*": ["helpers/*"]
     }
   }
 }
