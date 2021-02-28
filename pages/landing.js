@@ -28,9 +28,9 @@ export const FeaturedProducts = () => {
         Productos destacados
       </Paragraph>
       <div className="grid grid-cols-3 gap-4">
-        {generateProducts().map((p) => (
+        {generateProducts().map((p, i) => (
           <section className="col-span-3 lg:col-span-1 md:col-span-1">
-            <ProductCard {...p} />
+            <ProductCard key={`i-${i}`} {...p} />
           </section>
         ))}
       </div>
@@ -58,7 +58,7 @@ export const PopularBrands = () => {
   );
 };
 
-export const ImagePage = () => {
+export const Landing = () => {
   return (
     <div className="px-12 space-y-6">
       <PopularBrands />
@@ -67,4 +67,4 @@ export const ImagePage = () => {
   );
 };
 
-export default ImagePage;
+export default Landing;
