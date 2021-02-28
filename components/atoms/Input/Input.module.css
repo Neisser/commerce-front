@@ -1,0 +1,19 @@
+.input {
+  @apply text-black w-full h-5 font-sans rounded-sm;
+  @apply text-base font-medium leading-tight;
+  @apply border-2 border-solid border-black bg-gray-100;
+  padding: 12px 17px;
+  transition: box-shadow 0.2s ease;
+}
+
+.input::placeholder {
+  @apply text-gray-400;
+}
+
+.input:focus {
+  @apply outline-none shadow-sm;
+}
+
+.is-inline {
+  @apply max-w-max;
+}
