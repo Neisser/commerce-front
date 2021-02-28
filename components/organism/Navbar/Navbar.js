@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import withStyles from "../../hocs/withStyles";
+import withStyles from "../../../hocs/withStyles";
 import styles from "./Navbar.module.css";
 
 import Icon from '@material-ui/core/Icon';
