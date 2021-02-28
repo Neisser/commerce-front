@@ -11,6 +11,7 @@ import Badge from '@material-ui/core/Badge';
 import Button from 'atoms/Button';
 
 import Modal from 'molecules/Modal';
+import { routes } from 'helpers/constants';
 
 
 export const Navbar = ({ getStyles }) => {
@@ -41,9 +42,13 @@ export const Navbar = ({ getStyles }) => {
     return (
       <div className="sm:show" id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link href="/landing">
-            <a className={getStyles("list-option")}>Landing</a>
-          </Link>
+          {
+            routes.map((r) => (
+              <Link href={r.route}>
+                <a className={getStyles("list-option")}>{r.label}</a>
+              </Link>
+            ))
+          }
         </div>
       </div>
     )
@@ -89,6 +94,8 @@ export const Navbar = ({ getStyles }) => {
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
         Some Content
+        <hr />
+        <br />
         <div className="flex flex-col space-y-1 px-6">
           <Button
             type="primary"

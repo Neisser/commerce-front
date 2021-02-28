@@ -25,7 +25,7 @@ export const CatalogueItem = ({
       <div>
         <Image {...defaultMaxDimmension} src={srcImage}/>
       </div>
-      <div className="text-center space-y-4 pb-8 px-4 pt-5">
+      <div className="text-center flex flex-col items-center space-y-4 pb-8 px-4 pt-5">
         <Paragraph size={'xl'} weight={'normal'}>{title}</Paragraph>
         <Paragraph size={'xl'} weight={'normal'}>{description}</Paragraph>        
         <Button
