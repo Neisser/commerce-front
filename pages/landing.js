@@ -56,7 +56,7 @@ export const PopularBrands = () => {
 
 export const ImagePage = () => {
   return (
-    <div className="px-8 space-y-6">
+    <div className="px-12 space-y-6">
       <PopularBrands />
       <FeaturedProducts />
     </div>
