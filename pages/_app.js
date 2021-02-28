@@ -1,6 +1,6 @@
 // import App from 'next/app'
 import React, { useCallback, useState } from 'react';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import Footer from '../components/footer';
 
 // Import global style tailwidcss. Documentation: https://tailwindcss.com/

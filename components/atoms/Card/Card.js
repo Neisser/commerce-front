@@ -24,7 +24,8 @@ Card.prototype = {
 }
 
 Card.defaultProps = {
-  getStyles: () => {}
+  getStyles: () => {},
+  className: 'bg-white'
 }
 
 

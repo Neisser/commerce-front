@@ -15,6 +15,7 @@ class MyDocument extends Document {
           <title>commerce</title>
           <meta name="description" content="we are the best commerce!" />
 					<link rel="stylesheet" href="../assets/styles/styles.module.css" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
           {/* <!-- Facebook Meta Tags --> */}
 

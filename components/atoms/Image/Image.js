@@ -9,7 +9,7 @@ export const Image = ({
   className,
   src,
   isRounded,
-  maxHeight, 
+  maxHeight,
   maxWidth
 }) => {
   return (
@@ -50,7 +50,6 @@ Image.defaultProps = {
   getStyles: () => {},
   maxHeight: '261px',
   maxWidth: '349px',
-
 };
 
 export default withStyles(styles)(Image);
