@@ -8,6 +8,7 @@ import styles from "./Navbar.module.css";
 
 import Icon from '@material-ui/core/Icon';
 import Badge from '@material-ui/core/Badge';
+import Button from 'atoms/Button';
 
 import Modal from 'molecules/Modal';
 
@@ -88,6 +89,18 @@ export const Navbar = ({ getStyles }) => {
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
         Some Content
+        <div className="flex flex-col space-y-1 px-6">
+          <Button
+            type="primary"
+          >
+            Pagar
+          </Button>
+          <Button
+            type="primary"
+          >
+            Ver Carrito
+          </Button>
+        </div>
       </Modal>
     </>
   );
