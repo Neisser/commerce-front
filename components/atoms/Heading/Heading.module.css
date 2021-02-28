@@ -1,0 +1,47 @@
+.heading {
+  @apply flex items-start font-sans leading-tight;
+}
+
+.color-base {
+  @apply text-black;
+}
+
+.color-inverted {
+  @apply text-white;
+}
+
+.color-primary {
+  @apply text-background-primary;
+}
+
+.size-xs {
+  @apply text-xs;
+}
+
+.size-sm {
+  @apply text-sm;
+}
+
+.size-md {
+  @apply text-base;
+}
+
+.size-lg {
+  @apply text-lg;
+}
+
+.size-xl {
+  @apply text-xl;
+}
+
+.size-2xl {
+  @apply text-2xl;
+}
+
+.weight-normal {
+  @apply font-normal;
+}
+
+.weight-bold {
+  @apply font-bold;
+}

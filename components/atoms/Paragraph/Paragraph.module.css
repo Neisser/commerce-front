@@ -23,7 +23,15 @@
 }
 
 .size-lg {
+  @apply text-lg;
+}
+
+.size-base {
   @apply text-base;
+}
+
+.size-xl {
+  @apply text-xl;
 }
 
 .weight-normal {
@@ -34,6 +42,10 @@
   @apply font-medium;
 }
 
+.weight-bold {
+  @apply font-bold;
+}
+
 .is-striked {
   @apply line-through;
 }
@@ -41,3 +53,8 @@
 .is-inline {
   @apply w-auto;
 }
+
+.size-2xl {
+  @apply text-2xl;
+}
+

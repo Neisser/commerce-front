@@ -8,7 +8,9 @@ export const Image = ({
   getStyles,
   className,
   src,
-  isRounded
+  isRounded,
+  maxHeight,
+  maxWidth
 }) => {
   return (
     <article
@@ -19,6 +21,12 @@ export const Image = ({
           'is-rounded': isRounded
         }
       )}
+      style={
+        {
+          maxWidth: maxWidth, 
+          maxHeight: maxHeight
+        }
+      }
     >
       <img src={src} />
     </article>
@@ -30,7 +38,9 @@ Image.propTypes = {
   className: PropTypes.string,
   src: PropTypes.string,
   isRounded: PropTypes.bool,
-  height: PropTypes.string
+  height: PropTypes.string,
+  maxHeight: PropTypes.string,
+  maxWidth: PropTypes.string
 };
 
 Image.defaultProps = {
@@ -38,6 +48,8 @@ Image.defaultProps = {
   isRounded: false,
   height: 'auto',
   getStyles: () => {},
+  maxHeight: '261px',
+  maxWidth: '349px',
 };
 
 export default withStyles(styles)(Image);
