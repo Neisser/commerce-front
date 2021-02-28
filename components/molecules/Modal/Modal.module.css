@@ -1,0 +1,42 @@
+.wrapper {
+  @apply h-screen fixed w-screen flex;
+}
+
+.modal {
+  @apply border border-gray-100 max-w-max bg-white;
+  box-shadow: 0px 4px 31px rgba(0, 0, 0, 0.25);
+}
+
+
+.positionX-left {
+  @apply justify-start;
+}
+
+.positionX-right {
+  @apply justify-end;
+}
+
+.positionX-center {
+  @apply justify-center;
+}
+
+.positionY-top {
+  @apply items-start;
+}
+
+.positionY-center {
+  @apply items-center;
+}
+
+.positionY-bottom {
+  @apply items-end;
+}
+
+.modal-title {
+  @apply border-b border-gray-300 p-2 flex;
+}
+
+
+.modal-content {
+  @apply p-2;
+}

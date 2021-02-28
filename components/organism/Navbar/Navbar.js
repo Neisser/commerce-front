@@ -7,6 +7,9 @@ import withStyles from "../../../hocs/withStyles";
 import styles from "./Navbar.module.css";
 
 import Icon from '@material-ui/core/Icon';
+import Badge from '@material-ui/core/Badge';
+
+import Modal from 'molecules/Modal';
 
 
 export const Navbar = ({ getStyles }) => {
@@ -19,12 +22,13 @@ export const Navbar = ({ getStyles }) => {
   // }, []);
 
   const [ showMenu, setShowMenu ] = useState(false);
+  const [ showModal, setShowModal ] = useState(false)
 
-
-  /**
-   *
-   * @param {value} param0 get language value to generate content about your chooice
-   */
+  // Example to tranlate page
+  // /**
+  //  *
+  //  * @param {value} param0 get language value to generate content about your chooice
+  //  */
   // const changeLang = ({target: {value}}) => {
   //     const lang = value;
   //     router.push(router.pathname, router.pathname, {
@@ -43,20 +47,22 @@ export const Navbar = ({ getStyles }) => {
       </div>
     )
   }
+
   
   return (
     <>
-      {/* <select onChange={changeDarkMode}>
-                <option value="light">Light Mode</option>
-                <option value="dark">Dark Mode</option>
-            </select>
+      {/* 
+        <select onChange={changeDarkMode}>
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+        </select>
 
-            <select onChange={changeLang}>
-                {
-                    language.map(({key, value}, index) => (<option key={index} value={key}>{value}</option>))
-                }
-            </select>
-            <p>holi navbar</p> */}
+        <select onChange={changeLang}>
+            {
+                language.map(({key, value}, index) => (<option key={index} value={key}>{value}</option>))
+            }
+        </select>
+        <p>holi navbar</p> */}
       <nav className={getStyles('navbar', 'sticky top-0')}>
         <div className={getStyles('navbar-wrapper')}>
           <div className={getStyles('navbar-align-items')}>
@@ -68,7 +74,9 @@ export const Navbar = ({ getStyles }) => {
             </div>
             <div className={getStyles('navbar-icons-right-wrapper', 'sm:static sm:inset-auto sm:ml-6 sm:pr-5')}>
               <Icon>search</Icon>
-              <Icon>shopping_cart</Icon>
+              <Badge badgeContent={3} color="error">
+                <Icon onClick={() => setShowModal(!showModal)} className="cursor-pointer">shopping_cart</Icon>
+              </Badge>
               <Icon>person</Icon>
             </div>
           </div>
@@ -77,6 +85,10 @@ export const Navbar = ({ getStyles }) => {
         {/* <!-- Mobile menu, show/hide based on menu state. --> */}
         {showMenu ? componentListMenu() : <></>}
       </nav>
+
+      <Modal showModal={showModal} setShowModal={setShowModal}>
+        Some Content
+      </Modal>
     </>
   );
 };
