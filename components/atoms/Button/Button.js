@@ -17,7 +17,7 @@ export const Button = ({
   getStyles,
 }) => (
   <button
-    className={getStyles('button', ['type'], {
+    className={getStyles('button', 'flex justify-center', ['type'], {
       'is-inline': isInline || type === 'tertiary',
       'is-muted': isMuted && type === 'primary',
     })}

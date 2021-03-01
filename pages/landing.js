@@ -1,15 +1,14 @@
-
 // Atoms
-import Paragraph from 'atoms/Paragraph';
+import Paragraph from "atoms/Paragraph";
 
 // Molecules
-import ProductCard from 'molecules/ProductCard';
-import CatalogueItem from 'molecules/CatalogueItem';
-
+import ProductCard from "molecules/ProductCard";
+import CatalogueItem from "molecules/CatalogueItem";
 
 // FEATURED PRODUCTS
 const generateProducts = () => {
-  const srcImage = 'https://dynamicmedia.livenationinternational.com/Media/j/u/f/f2d52e23-e43e-4718-9de4-06be545aa18f.jpg';
+  const srcImage =
+    "https://dynamicmedia.livenationinternational.com/Media/j/u/f/f2d52e23-e43e-4718-9de4-06be545aa18f.jpg";
   const result = [];
   for (let i = 0; i < 3; i++) {
     result.push({
@@ -29,9 +28,9 @@ export const FeaturedProducts = () => {
         Productos destacados
       </Paragraph>
       <div className="grid grid-cols-3 gap-4">
-        {generateProducts().map((p) => (
+        {generateProducts().map((p, i) => (
           <section className="col-span-3 lg:col-span-1 md:col-span-1">
-            <ProductCard {...p} />
+            <ProductCard key={`i-${i}`} {...p} />
           </section>
         ))}
       </div>
@@ -39,22 +38,27 @@ export const FeaturedProducts = () => {
   );
 };
 
-
 // POPULAR BRANDS
 
 export const PopularBrands = () => {
-  const srcImage = 'https://starsandstories.com/wp-content/uploads/2018/07/Adidas-Reviews-about-shoes.png';
+  const srcImage =
+    "https://starsandstories.com/wp-content/uploads/2018/07/Adidas-Reviews-about-shoes.png";
+  const catalogueItem = {
+    srcImage,
+    title: "Adidas",
+    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
+  };
   return (
     <section className="space-y-6">
       <Paragraph size={"xl"} weight={"bold"}>
         Marcas destacadas
       </Paragraph>
-      <CatalogueItem srcImage={srcImage} className={'bg-gray-200'} />
+      <CatalogueItem {...catalogueItem} className={"bg-gray-200"} />
     </section>
-  )
-}
+  );
+};
 
-export const ImagePage = () => {
+export const Landing = () => {
   return (
     <div className="px-12 space-y-6">
       <PopularBrands />
@@ -63,4 +67,4 @@ export const ImagePage = () => {
   );
 };
 
-export default ImagePage;
+export default Landing;
