@@ -1,0 +1,63 @@
+.footer {
+  @apply w-full bg-gray-500;
+}
+
+.div {
+  @apply w-auto mx-auto p-20;
+}
+
+.logo {
+  @apply flex py-2;
+}
+
+.text {
+  @apply text-white;
+}
+
+.icon {
+  @apply flex mt-2 space-x-1 text-white;
+}
+
+.size-sm {
+  @apply text-xs sm:h-32;
+}
+
+.size-md {
+  @apply text-xs md:h-32;
+}
+
+.size-lg {
+  @apply text-xs lg:h-32;
+}
+
+.size-base {
+  @apply text-base;
+}
+
+.size-xl {
+  @apply text-xl xl:h-32;
+}
+
+.weight-normal {
+  @apply font-normal;
+}
+
+.weight-medium {
+  @apply font-medium;
+}
+
+.weight-bold {
+  @apply font-bold;
+}
+
+.is-striked {
+  @apply line-through;
+}
+
+.is-inline {
+  @apply w-auto;
+}
+
+.size-2xl {
+  @apply text-2xl h-7;
+}
