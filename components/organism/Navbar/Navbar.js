@@ -1,17 +1,20 @@
 import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Icon from '@material-ui/core/Icon';
+import Badge from '@material-ui/core/Badge';
 import PropTypes from "prop-types";
 
 import withStyles from "../../../hocs/withStyles";
 import styles from "./Navbar.module.css";
 
-import Icon from '@material-ui/core/Icon';
-import Badge from '@material-ui/core/Badge';
 import Button from 'atoms/Button';
 
 import Modal from 'molecules/Modal';
 import { routes } from 'helpers/constants';
+
+import Menu from 'organism/Menu'
+
 
 
 export const Navbar = ({ getStyles }) => {
@@ -24,7 +27,7 @@ export const Navbar = ({ getStyles }) => {
   // }, []);
 
   const [ showMenu, setShowMenu ] = useState(false);
-  const [ showModal, setShowModal ] = useState(false)
+  const [ showModal, setShowModal ] = useState(false);
 
   // Example to tranlate page
   // /**
@@ -69,6 +72,7 @@ export const Navbar = ({ getStyles }) => {
             }
         </select>
         <p>holi navbar</p> */}
+      <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
       <nav className={getStyles('navbar', 'sticky top-0')}>
         <div className={getStyles('navbar-wrapper')}>
           <div className={getStyles('navbar-align-items')}>
@@ -87,12 +91,9 @@ export const Navbar = ({ getStyles }) => {
             </div>
           </div>
         </div>
-
-        {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-        {showMenu ? componentListMenu() : <></>}
       </nav>
 
-      <Modal showModal={showModal} setShowModal={setShowModal}>
+      {showModal ? <Modal showModal={showModal} setShowModal={setShowModal}>
         Some Content
         <hr />
         <br />
@@ -108,7 +109,7 @@ export const Navbar = ({ getStyles }) => {
             Ver Carrito
           </Button>
         </div>
-      </Modal>
+      </Modal> : false}
     </>
   );
 };
