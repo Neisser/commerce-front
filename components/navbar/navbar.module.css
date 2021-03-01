@@ -7,7 +7,7 @@
 }
 
 .navbar-align-items {
-  @apply mx-0 relative flex items-center justify-between h-16
+  @apply mx-0 relative flex items-center justify-between h-16;
 }
 
 .navbar-icon-menu-wrapper {
