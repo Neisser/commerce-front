@@ -28,7 +28,7 @@ export const Payment = ({ getStyles }) => {
         </div>
 
         {/* Icono */} 
-        <div className="font-size:2.25rem">
+        <div>
             <Icon>check_circle_outline</Icon>
         </div>
 
