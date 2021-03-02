@@ -11,5 +11,10 @@ export const routes = [
   {
     route: '/product',
     label: 'Product'
+  },
+  {
+    route: '/payment',
+    label: 'Payment'
   }
+
 ]
