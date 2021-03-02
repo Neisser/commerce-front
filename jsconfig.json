@@ -5,10 +5,10 @@
       "@/*": ["components/*"],
       "atoms/*": ["components/atoms/*"],
       "molecules/*": ["components/molecules/*"],
-      "organism/*": ["components/organism/*"],
+      "organisms/*": ["components/organisms/*"],
       "pages/*": ["pages/*"],
       "hocs/*": ["hocs/*"],
-      "helpers/*": ["helpers/*"],
+      "helpers/*": ["helpers/*"]
     }
   }
 }
