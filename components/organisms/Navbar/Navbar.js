@@ -1,21 +1,21 @@
-import { useCallback, useState } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { useCallback, useState, useEffect } from "react";
 import Icon from '@material-ui/core/Icon';
 import Badge from '@material-ui/core/Badge';
 import PropTypes from 'prop-types';
 
-import withStyles from '../../../hocs/withStyles';
-import styles from './Navbar.module.css';
 
-import Button from 'atoms/Button';
+import withStyles from "../../../hocs/withStyles";
+import styles from "./Navbar.module.css";
 
-import Modal from 'molecules/Modal';
 import { routes } from 'helpers/constants';
+import db, { subject, Collections } from 'helpers/db';
 
-import Menu from '@/organisms/Menu';
+import Menu from 'organisms/Menu';
+import { getProductsFromIndexDB } from '../../../services/car-shop';
 
-export const Navbar = ({ getStyles }) => {
+
+
+export const Navbar = ({ getStyles, setShowModal, showModal }) => {
   // console.log(props);
   // const router = useRouter();
   // const { onChange } = props;
@@ -24,9 +24,8 @@ export const Navbar = ({ getStyles }) => {
   //     onChange(value)
   // }, []);
 
-  const [showMenu, setShowMenu] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
+  const [ showMenu, setShowMenu ] = useState(false);
+  const [ countCarShop, setCountCarShop ] = useState(0);
   // Example to tranlate page
   // /**
   //  *
@@ -38,20 +37,20 @@ export const Navbar = ({ getStyles }) => {
   //         locale: lang
   //     })
   // }
-
-  const componentListMenu = () => {
-    return (
-      <div className="sm:show" id="mobile-menu">
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          {routes.map((r) => (
-            <Link href={r.route}>
-              <a className={getStyles('list-option')}>{r.label}</a>
-            </Link>
-          ))}
-        </div>
-      </div>
-    );
-  };
+  useEffect(() => {
+    getProductsFromIndexDB()
+    .then((products) => {
+      console.log(products);
+      setCountCarShop(products.length)
+    });
+    subject.subscribe(() => {
+      getProductsFromIndexDB()
+      .then((products) => {
+        console.log(products);
+        setCountCarShop(products.length)
+      });
+    })
+  }, []);
 
   return (
     <>
@@ -83,40 +82,16 @@ export const Navbar = ({ getStyles }) => {
             >
               LOGO
             </div>
-            <div
-              className={getStyles(
-                'navbar-icons-right-wrapper',
-                'sm:static sm:inset-auto sm:ml-6 sm:pr-5'
-              )}
-            >
-              <Icon>search</Icon>
-              <Badge badgeContent={3} color="error">
-                <Icon
-                  onClick={() => setShowModal(!showModal)}
-                  className="cursor-pointer"
-                >
-                  shopping_cart
-                </Icon>
+            <div className={getStyles('navbar-icons-right-wrapper', 'sm:static sm:inset-auto sm:ml-6 sm:pr-5')}>
+              <Icon className="cursor-pointer">search</Icon>
+              <Badge badgeContent={countCarShop} color="error">
+                <Icon onClick={() => setShowModal(!showModal)} className="cursor-pointer">shopping_cart</Icon>
               </Badge>
               <Icon>person</Icon>
             </div>
           </div>
         </div>
       </nav>
-
-      {showModal ? (
-        <Modal showModal={showModal} setShowModal={setShowModal}>
-          Some Content
-          <hr />
-          <br />
-          <div className="flex flex-col space-y-1 px-6">
-            <Button type="primary">Pagar</Button>
-            <Button type="primary">Ver Carrito</Button>
-          </div>
-        </Modal>
-      ) : (
-        false
-      )}
     </>
   );
 };

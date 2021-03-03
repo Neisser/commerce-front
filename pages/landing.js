@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
+
 // Atoms
 import Paragraph from "atoms/Paragraph";
 
 // Molecules
 import ProductCard from "molecules/ProductCard";
 import CatalogueItem from "molecules/CatalogueItem";
+
+// Services
+import { addProductInIndexDb } from 'services/car-shop';
+import { getFeaturedCompanies } from 'services/landing';
 
 // FEATURED PRODUCTS
 const generateProducts = () => {
@@ -12,8 +18,9 @@ const generateProducts = () => {
   const result = [];
   for (let i = 0; i < 3; i++) {
     result.push({
+      id: `${i}`,
       srcImage: srcImage,
-      name: "Product " + i,
+      name: 'Product ' + i,
       price: 1000,
       rate: 5,
     });
@@ -28,9 +35,9 @@ export const FeaturedProducts = () => {
         Productos destacados
       </Paragraph>
       <div className="grid grid-cols-3 gap-4">
-        {generateProducts().map((p, i) => (
-          <section className="col-span-3 lg:col-span-1 md:col-span-1">
-            <ProductCard key={`i-${i}`} {...p} />
+        {generateProducts().map((product, i) => (
+          <section className="col-span-3 lg:col-span-1 md:col-span-1 cursor-pointer" onClick={() => addProductInIndexDb(product)}>
+            <ProductCard key={`i-${i}`} {...product} />
           </section>
         ))}
       </div>
@@ -40,7 +47,7 @@ export const FeaturedProducts = () => {
 
 // POPULAR BRANDS
 
-export const PopularBrands = () => {
+export const PopularCompanies = () => {
   const srcImage =
     "https://starsandstories.com/wp-content/uploads/2018/07/Adidas-Reviews-about-shoes.png";
   const catalogueItem = {
@@ -49,7 +56,7 @@ export const PopularBrands = () => {
     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
   };
   return (
-    <section className="space-y-6">
+    <section className="space-y-6" >
       <Paragraph size={"xl"} weight={"bold"}>
         Marcas destacadas
       </Paragraph>
@@ -59,9 +66,18 @@ export const PopularBrands = () => {
 };
 
 export const Landing = () => {
+  useEffect(() => {
+    _getFeaturedCompanies()
+  }, [])
+
+  const _getFeaturedCompanies = async () => {
+    const response = await getFeaturedCompanies()
+    console.log(response);
+  }
+
   return (
     <div className="px-12 space-y-6">
-      <PopularBrands />
+      <PopularCompanies />
       <FeaturedProducts />
     </div>
   );

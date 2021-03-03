@@ -11,6 +11,7 @@ import Card  from "atoms/Card"
 import styles from './ProductCard.module.css';
 
 export const ProductCard = ({
+  key,
   name,
   srcImage,
   price,
@@ -18,7 +19,7 @@ export const ProductCard = ({
   className
 })  => {
   return (
-    <Card className={className}>
+    <Card className={className} key={key}>
       <section>
         <Image src={srcImage} />
       </section>
@@ -37,6 +38,7 @@ export const ProductCard = ({
 
 
 ProductCard.prototype = {
+  key: PropTypes.string,
   srcImage: PropTypes.string.isRequired,
   getStyles: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,

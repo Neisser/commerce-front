@@ -7,24 +7,32 @@ import withStyles from '../../../hocs/withStyles';
 export const Image = ({
   getStyles,
   className,
+  isBorder,
   src,
+  height,
+  width,
   isRounded,
   maxHeight,
-  maxWidth
+  maxWidth,
+  key
 }) => {
   return (
     <article
+      key={key}
       className={getStyles(
         className, 
         ['height'],
         {
-          'is-rounded': isRounded
+          'is-rounded': isRounded,
+          'is-border': isBorder,
         }
       )}
       style={
         {
-          maxWidth: maxWidth, 
-          maxHeight: maxHeight
+          maxWidth,
+          maxHeight,
+          height,
+          width,
         }
       }
     >
@@ -34,19 +42,25 @@ export const Image = ({
 };
 
 Image.propTypes = {
+  key: PropTypes.string,
   getStyles: PropTypes.func.isRequired,
   className: PropTypes.string,
   src: PropTypes.string,
   isRounded: PropTypes.bool,
+  isBorder: PropTypes.bool,
   height: PropTypes.string,
+  width: PropTypes.string,
   maxHeight: PropTypes.string,
   maxWidth: PropTypes.string
 };
 
 Image.defaultProps = {
+  key: '',
   src: '',
   isRounded: false,
+  isBorder: false,
   height: 'auto',
+  width: 'auto',
   getStyles: () => {},
   maxHeight: '261px',
   maxWidth: '349px',
