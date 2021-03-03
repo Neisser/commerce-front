@@ -1,5 +1,6 @@
 export const Collections = {
-  SETTINGS: 'settings'
+  SETTINGS: 'settings',
+  CAR_SHOP: 'car_shop'
 }
 
 /**

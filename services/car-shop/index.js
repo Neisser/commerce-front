@@ -1,0 +1,1 @@
+export { getProductsFromIndexDB, removeProductFromIndexDB, addProductInIndexDb, updateProductInIndexDb } from './cars-shop'

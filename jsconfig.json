@@ -9,6 +9,7 @@
       "pages/*": ["pages/*"],
       "hocs/*": ["hocs/*"],
       "helpers/*": ["helpers/*"],
+      "services/*": ["services/*"]
     }
   }
 }

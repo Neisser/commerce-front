@@ -1,0 +1,11 @@
+.product-item{
+  @apply flex flex-row p-4;
+}
+
+.product-item-content {
+  @apply px-2 w-full;
+}
+
+.product-item-content-title {
+  @apply flex flex-row;
+}

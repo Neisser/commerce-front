@@ -13,3 +13,5 @@ export const routes = [
     label: 'Product'
   }
 ]
+
+export const baseApi = process.env.baseApi;

@@ -23,21 +23,28 @@ export const Modal = ({
   
 }) => {
   return(
-    <div className={getStyles('wrapper', ['positionY', 'positionX'])}>
-      <main className={getStyles('modal', `${!showModal ? 'hidden': ''}`)} style={{maxHeight, maxWidth, minWidth, minHeight}}>
-        {
-          showTitle ? (
-            <div className={getStyles('modal-title')}>
-              <Paragraph size={'md'} weight={'bold'}>{title}</Paragraph>
-              <Icon className="cursor-pointer" onClick={() => setShowModal(!showModal)}>clear</Icon>
-            </div>
-          ) : <></>
-        }
-        <div className={getStyles('modal-content')}>
-          {children}
-        </div>
-      </main>
-    </div>
+    <> 
+      {
+        showModal ? (
+          <div className={getStyles('wrapper', ['positionY', 'positionX'])}>
+            <main className={getStyles('modal', `${!showModal ? 'hidden': ''}`)} style={{maxHeight, maxWidth, minWidth, minHeight}}>
+              {
+                showTitle ? (
+                  <div className={getStyles('modal-title')}>
+                    <Paragraph size={'md'} weight={'bold'}>{title}</Paragraph>
+                    <Icon className="cursor-pointer" onClick={() => setShowModal(!showModal)}>clear</Icon>
+                  </div>
+                ) : <></>
+              }
+              <div className={getStyles('modal-content')}>
+                {children}
+              </div>
+            </main>
+            <div className={getStyles('overlay')} onClick={() => setShowModal(!showModal)}></div>
+          </div>
+        ) : false
+      }
+    </>
   )
 }
 
@@ -62,7 +69,6 @@ Modal.defaultProps = {
   openModal: false,
   maxWidth: '21.688rem',
   minWidth: '21.688rem',
-  maxHeight: '21.688rem',
   minHeight: '21.688rem',
   positionY: 'top',
   positionX: 'right',
