@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Paragraph from 'atoms/Paragraph';
-import Heading from 'atoms/Heading';
+import Carousel from 'molecules/Carousel';
+import Image from 'atoms/Image';
 import {
   setDataFromLocal,
   getDataFromLocal,
@@ -8,6 +8,21 @@ import {
   language,
   LanguageEnum,
 } from '../helpers';
+
+const products = [
+  {
+    src: 'https://via.placeholder.com/349/92c952',
+  },
+  {
+    src: 'https://via.placeholder.com/349/771796',
+  },
+  {
+    src: 'https://via.placeholder.com/349/24f355',
+  },
+  {
+    src: 'https://via.placeholder.com/349/d32776',
+  },
+];
 
 export default function Home(props) {
   // DECLARATIONS
@@ -24,9 +39,11 @@ export default function Home(props) {
   return (
     <>
       <article className="sm:grid grid-cols-5 bg-white shadow-sm p-7 relative lg:max-w-2xl sm:p-4 rounded-lg lg:col-span-2 lg:ml-20">
-        <div className="text-red-500">{home.title}</div>
-        <Paragraph>Hello World</Paragraph>
-        <Heading>Hello World</Heading>
+        <Carousel>
+          {products.map((product) => (
+            <Image src={product.src} />
+          ))}
+        </Carousel>
       </article>
     </>
   );
