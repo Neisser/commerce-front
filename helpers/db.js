@@ -7,7 +7,7 @@ export const Collections = {
   CAR_SHOP: 'car_shop'
 }
 
-const db = new Dexie('ReactSampleDB');
+const db = new Dexie('clusthersdb');
 db.version(1).stores({ [Collections.CAR_SHOP]: '$$id' });
 db.open();
 
