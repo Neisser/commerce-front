@@ -29,7 +29,7 @@ export const Payment = ({ getStyles }) => {
 
         {/* Icono */} 
         <div>
-            <Icon>check_circle_outline</Icon>
+            <Icon style={{fontSize: "11rem"}}>check_circle_outline</Icon>
         </div>
 
         {/* Mensaje */}
@@ -42,7 +42,7 @@ export const Payment = ({ getStyles }) => {
         </div>
 
         {/* Boton */}
-        
+
         <div class="mt-3 sm:mt-0 sm:ml-3 w-full">
               <a href="#" class="w-full flex justify-center py-2 border border-transparent text-sm font-medium bg-gray-300 md:text-sm ">
                 Finalizar
@@ -50,7 +50,7 @@ export const Payment = ({ getStyles }) => {
             </div>
 
       </div>
-    
+
   ); 
 };
 
@@ -58,4 +58,4 @@ Payment.prototype = {
   getStyles: PropTypes.func.isRequired,
 };
 
-export default Payment;
+export default Payment; 
