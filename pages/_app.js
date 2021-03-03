@@ -1,13 +1,12 @@
 // import App from 'next/app'
 import React, { useCallback, useState } from 'react';
-import db from 'helpers/db';
 
 // import DexieObs from 'dexie-observable';
 
-import Navbar from 'organism/Navbar';
-import Footer from 'organism/Footer';
+import Navbar from 'organisms/Navbar';
+import Footer from 'organisms/Footer';
 
-import CarShop from 'organism/CarShop';
+import CarShop from 'organisms/CarShop';
 
 
 // Import global style tailwidcss. Documentation: https://tailwindcss.com/

@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import Icon from '@material-ui/core/Icon';
 import Badge from '@material-ui/core/Badge';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 
 import withStyles from "../../../hocs/withStyles";
@@ -10,7 +10,7 @@ import styles from "./Navbar.module.css";
 import { routes } from 'helpers/constants';
 import db, { subject, Collections } from 'helpers/db';
 
-import Menu from 'organism/Menu';
+import Menu from 'organisms/Menu';
 import { getProductsFromIndexDB } from '../../../services/car-shop';
 
 
@@ -52,7 +52,6 @@ export const Navbar = ({ getStyles, setShowModal, showModal }) => {
     })
   }, []);
 
-  
   return (
     <>
       {/* 
@@ -71,10 +70,16 @@ export const Navbar = ({ getStyles, setShowModal, showModal }) => {
       <nav className={getStyles('navbar', 'sticky top-0')}>
         <div className={getStyles('navbar-wrapper')}>
           <div className={getStyles('navbar-align-items')}>
-            <div onClick={() => setShowMenu(!showMenu)} className={getStyles('navbar-icon-menu-wrapper','sm:show')}>
+            <div
+              onClick={() => setShowMenu(!showMenu)}
+              className={getStyles('navbar-icon-menu-wrapper', 'sm:show')}
+            >
               <Icon>menu</Icon>
             </div>
-            <div className={getStyles()} className="lg:items-stretch lg:justify-start mx-10">
+            <div
+              className={getStyles()}
+              className="lg:items-stretch lg:justify-start mx-10"
+            >
               LOGO
             </div>
             <div className={getStyles('navbar-icons-right-wrapper', 'sm:static sm:inset-auto sm:ml-6 sm:pr-5')}>
