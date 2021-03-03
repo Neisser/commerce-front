@@ -1,6 +1,6 @@
 // import App from 'next/app'
 import React, { useCallback, useState } from 'react';
-import Navbar from '../components/organism/Navbar';
+import Navbar from 'organisms/Navbar';
 import Footer from '../components/footer';
 
 // Import global style tailwidcss. Documentation: https://tailwindcss.com/
@@ -20,7 +20,11 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <React.Fragment>
-      <div className={`${styles[`theme-${theme}`]} flex flex-col max-h-screen bg-background-primary`}>
+      <div
+        className={`${
+          styles[`theme-${theme}`]
+        } flex flex-col max-h-screen bg-background-primary`}
+      >
         <Navbar onChange={handlerDarkMode} />
         <div className="overflow-y-scroll flex-1">
           <Component {...pageProps} />
