@@ -35,9 +35,9 @@ export const FeaturedProducts = () => {
         Productos destacados
       </Paragraph>
       <div className="grid grid-cols-3 gap-4">
-        {generateProducts().map((p, i) => (
-          <section className="col-span-3 lg:col-span-1 md:col-span-1 cursor-pointer" onClick={() => addProductInIndexDb(p)}>
-            <ProductCard key={`i-${i}`} {...p} />
+        {generateProducts().map((product, i) => (
+          <section className="col-span-3 lg:col-span-1 md:col-span-1 cursor-pointer" onClick={() => addProductInIndexDb(product)}>
+            <ProductCard key={`i-${i}`} {...product} />
           </section>
         ))}
       </div>

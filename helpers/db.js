@@ -8,7 +8,7 @@ export const Collections = {
 }
 
 const db = new Dexie('clusthersdb');
-db.version(1).stores({ [Collections.CAR_SHOP]: '$$id' });
+db.version(1).stores({ [Collections.CAR_SHOP]: 'id' });
 db.open();
 
 export default db;

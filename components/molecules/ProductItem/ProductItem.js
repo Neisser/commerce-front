@@ -68,7 +68,6 @@ export const ProductItem = ({
     </>
   )
 }
-
 ProductItem.prototype = {
   inCount: PropTypes.number,
   outCount: PropTypes.func,
@@ -76,7 +75,7 @@ ProductItem.prototype = {
   productName: PropTypes.string,
   price: PropTypes.number,
   srcImage: PropTypes.string,
-  type: PropTypes.oneOfType(options.type),
+  type: PropTypes.oneOf(options.type),
   removeItem: PropTypes.func
 }
 

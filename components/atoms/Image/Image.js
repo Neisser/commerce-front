@@ -13,10 +13,12 @@ export const Image = ({
   width,
   isRounded,
   maxHeight,
-  maxWidth
+  maxWidth,
+  key
 }) => {
   return (
     <article
+      key={key}
       className={getStyles(
         className, 
         ['height'],
@@ -40,6 +42,7 @@ export const Image = ({
 };
 
 Image.propTypes = {
+  key: PropTypes.string,
   getStyles: PropTypes.func.isRequired,
   className: PropTypes.string,
   src: PropTypes.string,
@@ -52,6 +55,7 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
+  key: '',
   src: '',
   isRounded: false,
   isBorder: false,

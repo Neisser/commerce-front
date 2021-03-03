@@ -6,12 +6,13 @@ import withStyles from '../../../hocs/withStyles';
 
 
 export const Card = ({
+  key,
   children,
   getStyles,
   className,
 }) => {
   return(
-    <div className={getStyles(className,'max-w-xs')}>
+    <div key={key} className={getStyles(className,'max-w-xs')}>
       {children}
     </div>
   )

@@ -40,8 +40,8 @@ export default function Home(props) {
     <>
       <article className="sm:grid grid-cols-5 bg-white shadow-sm p-7 relative lg:max-w-2xl sm:p-4 rounded-lg lg:col-span-2 lg:ml-20">
         <Carousel>
-          {products.map((product) => (
-            <Image src={product.src} />
+          {products.map((product, index) => (
+            <Image key={`${index}`} src={product.src} />
           ))}
         </Carousel>
       </article>

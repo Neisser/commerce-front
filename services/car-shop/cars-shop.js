@@ -13,6 +13,8 @@ export const removeProductFromIndexDB = (id) => {
 }
 
 export const addProductInIndexDb = (product) => {
+  console.log(product, Collections)
+  console.log(db.table(Collections.CAR_SHOP).where('id').equalsIgnoreCase(product.id));
   db.table(Collections.CAR_SHOP).where('id').equalsIgnoreCase(product.id).toArray().then(res => {
     const selectedProduct = res[0];
     if(!res.length) {
@@ -28,6 +30,8 @@ export const addProductInIndexDb = (product) => {
         subject.next(true)
       });
     }
+  }).catch((error) => {
+    console.log(error);
   });
 }
 
