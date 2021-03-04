@@ -4,8 +4,7 @@ module.exports = {
     defaultLocale: 'es',
   },
   env: {
-    prod: 'my-value-prod',
-    dev: 'my-value-dev',
+    baseApi: 'https://api.clusthers.com/api/v1'
   },
   experiment: {css: true}
 }

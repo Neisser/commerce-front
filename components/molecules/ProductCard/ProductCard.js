@@ -11,25 +11,34 @@ import Card  from "atoms/Card"
 import styles from './ProductCard.module.css';
 
 export const ProductCard = ({
+  key,
   name,
   srcImage,
-  price,
+  prices,
   rate,
   className
 })  => {
+  const unitPrice = prices.map(price => `$ ${price.unit_price}`).join(' - ');
+  const minAmount = Math.min.apply(Math, prices.map(price => price.min_stock));
+  const maxAmount = Math.max.apply(Math, prices.map(price => price.max_stock));
+  const value = `desde: ${minAmount} - hasta: ${maxAmount}`;
+
   return (
-    <Card className={className}>
-      <section>
+    <Card className={`${className} shadow`} key={key}>
+      <section className="p-4">
         <Image src={srcImage} />
       </section>
-      <section>
+      <section className="px-4">
         <Paragraph size={'2xl'} weight={ 'medium' }>{name}</Paragraph>  
       </section>
-      <section>
+      <section className="px-4">
         <Paragraph size={'md'} weight={ 'medium' }>Star Rate {rate}</Paragraph>
       </section>
-      <section className="text-right">
-        <Paragraph size={'md'} weight={ 'medium' }>{price}$</Paragraph>  
+      <section className="px-4 text-right">
+        <Paragraph size={'md'} weight={ 'medium' }>{ unitPrice } / unidad</Paragraph>
+      </section>
+      <section className="px-4 pb-4 text-left">
+        <Paragraph size={'md'} weight={ 'normal' }>{ value }</Paragraph>
       </section>
     </Card>
   )
@@ -37,10 +46,11 @@ export const ProductCard = ({
 
 
 ProductCard.prototype = {
+  key: PropTypes.string,
   srcImage: PropTypes.string.isRequired,
   getStyles: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  prices: PropTypes.array.isRequired,
   rate: PropTypes.number.isRequired,
   className: PropTypes.string
 }
@@ -48,7 +58,7 @@ ProductCard.prototype = {
 ProductCard.defaultProps = {
   srcImage: '',
   name: '',
-  price: 0,
+  prices: [],
   rate: 0,
   getStyles: () => {}
 }
