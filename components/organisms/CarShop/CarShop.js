@@ -5,8 +5,8 @@ import withStyles from '../../../hocs/withStyles';
 import styles from './CarShop.module.css';
 
 // HELPERS
-import db, { subject, Collections } from 'helpers/db';
-import { getProductsFromIndexDB, removeProductFromIndexDB, updateProductInIndexDb } from 'services/car-shop';
+import { subject } from 'helpers/db';
+import { getProductsFromIndexDB, removeProductFromIndexDB, updateProductInIndexDb, subjectPay } from 'services/car-shop';
 
 import Button from 'atoms/Button';
 import Paragraph from 'atoms/Paragraph';
@@ -59,31 +59,77 @@ export const CarShop = ({ setShowModal, showModal }) => {
 
   const handleTotal = (_products) => {
     const total = _products
-    .map((p) => p.price * p.count)
+    .map((product) => {
+      const price = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock).unit_price
+      return (price * product.count)
+    })
     .reduce((a, b) => a + b);
     setTotal(total);
+  }
+
+  const handleButtonPay = () => {
+    const payload = {
+      details: products.map( product => {
+        const unitPrice = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock).unit_price
+        return ({
+          productId: product.id,
+          detailsProduct: [
+            {
+              quantity:product.count,
+              unit_price: unitPrice,
+              color: 'azul',
+              size: 'L',
+              material: 'poliester',
+            }
+          ],
+        })
+      }),
+      code: 'smefemifs8',
+      userId:'603c5a21978d3d3d008826df',
+      companyId:'603ad5c0ee3ee2389aaf3e34',
+      couponsId: '603c7dbc0e76c2066c33d064',
+      address:{
+          name: 'alskjdklas',
+          address: 'alskjdklas',
+          optional: 'alskjdklas',
+          country: 'alskjdklas',
+          province: 'alskjdklas',
+          city: 'alskjdklas',
+          location: 'alskjdklas',
+          neighborhood: 'alskjdklas',
+          postal_code: 139081203,
+          contact: 'alskjdklas'
+      },
+      total: total
+    }
+    subjectPay.next(payload);
   }
 
   const getCarShopContent = () => {
     return (
         <>
-          {products.map((product) => (
-                <ProductItem
-                  productName={product.name}
-                  price={product.price}
-                  srcImage={product.srcImage}
-                  inCount={product.count}
-                  removeItem={
-                    () => handleRemoveItem(product.id)
-                  }
-                  outCount={(value) => {
-                    // ASSIGN NEW VALUE
-                    product.count = value;
-                    // SET VALUE INTO STATE OF EACH OTHER
-                    handleUpdateItem(product)
-                  }}
-                />
-              ))}
+          {
+            products.map((product) => {
+              const price = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock).unit_price
+              return (
+                  <ProductItem
+                    productName={product.name}
+                    price={price}
+                    srcImage={product.srcImage}
+                    inCount={product.count}
+                    removeItem={
+                      () => handleRemoveItem(product.id)
+                    }
+                    outCount={(value) => {
+                      // ASSIGN NEW VALUE
+                      product.count = value;
+                      // SET VALUE INTO STATE OF EACH OTHER
+                      handleUpdateItem(product)
+                    }}
+                  />
+                )
+            })
+          }
 
               <hr />
               <div className="p-6">
@@ -92,11 +138,11 @@ export const CarShop = ({ setShowModal, showModal }) => {
                 </Paragraph>
 
                 <Paragraph size={"sm"} weight={"bold"}>
-                  {total}
+                  {total} COL
                 </Paragraph>
               </div>
               <div className="flex flex-col space-y-1 p-6">
-                <Button type="primary">Pagar</Button>
+                <Button type="primary" onClick={() => handleButtonPay()}>Pagar</Button>
                 <Button type="primary">Ver Carrito</Button>
               </div>
         </>
@@ -124,7 +170,7 @@ export const CarShop = ({ setShowModal, showModal }) => {
 
 CarShop.prototype = {
   showModal: PropTypes.bool,
-  setShowModal: PropTypes.func,
+  setShowModal: PropTypes.func
 };
 
 export default withStyles(styles)(CarShop);

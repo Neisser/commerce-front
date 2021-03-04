@@ -1,4 +1,9 @@
 import db, { subject, Collections } from 'helpers/db';
+import { Subject } from 'rxjs';
+
+
+export const subjectPay = new Subject();
+export const subjectPayObservable = subjectPay.asObservable()
 
 export const getProductsFromIndexDB = () => {
   return db.table(Collections.CAR_SHOP)
