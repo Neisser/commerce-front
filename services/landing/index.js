@@ -1,0 +1,1 @@
+export { getFeaturedCompanies, getFeaturedOProducts } from './landing';

@@ -13,3 +13,6 @@ export const routes = [
     label: 'Product'
   }
 ]
+
+export const baseApi = process.env.baseApi;
+export const baseLocalApi = 'http://localhost:3000/api/v1';

@@ -54,6 +54,10 @@
   @apply w-auto;
 }
 
+.is-truncate {
+  @apply truncate;
+}
+
 .size-2xl {
   @apply text-2xl;
 }
