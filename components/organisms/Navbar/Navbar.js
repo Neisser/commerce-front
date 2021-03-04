@@ -40,13 +40,11 @@ export const Navbar = ({ getStyles, setShowModal, showModal }) => {
   useEffect(() => {
     getProductsFromIndexDB()
     .then((products) => {
-      console.log(products);
       setCountCarShop(products.length)
     });
     subject.subscribe(() => {
       getProductsFromIndexDB()
       .then((products) => {
-        console.log(products);
         setCountCarShop(products.length)
       });
     })

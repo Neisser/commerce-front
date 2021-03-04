@@ -20,8 +20,7 @@ export const Image = ({
     <article
       key={key}
       className={getStyles(
-        className, 
-        ['height'],
+        className,
         {
           'is-rounded': isRounded,
           'is-border': isBorder,
@@ -36,7 +35,14 @@ export const Image = ({
         }
       }
     >
-      <img src={src} />
+      <img src={src} style={
+        {
+          maxWidth,
+          maxHeight,
+          height: '100%',
+          width:'100%',
+        }
+      } />
     </article>
   );
 };

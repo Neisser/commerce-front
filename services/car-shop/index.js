@@ -1,1 +1,8 @@
-export { getProductsFromIndexDB, removeProductFromIndexDB, addProductInIndexDb, updateProductInIndexDb } from './cars-shop'
+export {
+  getProductsFromIndexDB,
+  removeProductFromIndexDB,
+  addProductInIndexDb,
+  updateProductInIndexDb,
+  subjectPay,
+  subjectPayObservable
+} from "./cars-shop";

@@ -36,7 +36,7 @@ export const Modal = ({
                   </div>
                 ) : <></>
               }
-              <div className={getStyles('modal-content')}>
+              <div className={getStyles('modal-content')} style={{height: minHeight}}>
                 {children}
               </div>
             </main>
