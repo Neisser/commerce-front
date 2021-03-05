@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from './footer.module.css';
 import PropTypes from 'prop-types';
-import withStyles from '../../hocs/withStyles';
+
+
+import styles from './footer.module.css';
+import withStyles from '../../../hocs/withStyles';
+
 import Icon from '@material-ui/core/Icon';
-
-
 import Paragraph from 'atoms/Paragraph';
 export const Footer = ({ getStyles }) => {
   return (

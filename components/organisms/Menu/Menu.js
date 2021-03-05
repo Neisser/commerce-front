@@ -66,8 +66,8 @@ export const Menu = ({
   return (
     <MenuComponent onClose={() => setShowMenu(!showMenu)} styles={stylesMenuComponent} isOpen={showMenu}>
       {
-        routes.map((r) => (
-          <Link href={r.route}>
+        routes.map((r, i) => (
+          <Link key={i} href={r.route}>
             <a className={getStyles("list-option")}>{r.label}</a>
           </Link>
         ))
