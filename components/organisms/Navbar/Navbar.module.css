@@ -1,9 +1,43 @@
-.navbar {
-  @apply bg-white border-b-2 border-black;
+/* small desktop */
+@media all and (max-width: 1920px) {
+  .navbar-right-icon{
+    color: #07AFBC;
+    @apply cursor-pointer;
+  }
 }
+
+/* tablet */
+@media all and (max-width: 1024px) {
+  .navbar-right-icon{
+    color: #07AFBC;
+    @apply cursor-pointer;
+  }
+}
+
+/* mobile phone */
+@media all and (max-width: 768px) {
+  .navbar-right-icon{
+    color:#07AFBC;
+    @apply cursor-pointer;
+  }
+
+  .navbar-right-icon-white{
+    color:white;
+  }
+}
+
+.navbar {
+  @apply bg-white ;
+}
+
 
 .navbar-wrapper {
   @apply mx-4;
+}
+
+.navbar-icon {
+  color: #042A2D;
+  @apply font-bold;
 }
 
 .navbar-align-items {

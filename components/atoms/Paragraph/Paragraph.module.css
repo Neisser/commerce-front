@@ -3,7 +3,7 @@
 }
 
 .color-base {
-  @apply text-black;
+  color: #042A2D;
 }
 
 .color-inverted {
@@ -27,11 +27,23 @@
 }
 
 .size-base {
-  @apply text-base;
+ @apply text-base;
 }
 
 .size-xl {
   @apply text-xl;
+}
+
+.size-2xl {
+  @apply text-2xl;
+}
+
+.size-3xl {
+  font-size: 1.75rem;
+}
+
+.weight-light {
+  @apply font-light;
 }
 
 .weight-normal {
@@ -58,7 +70,4 @@
   @apply truncate;
 }
 
-.size-2xl {
-  @apply text-2xl;
-}
 
