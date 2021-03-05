@@ -11,14 +11,17 @@ export const Paragraph = ({
   className,
   isStriked,
   isInline,
+  isTruncate
 }) => {
   const classes = getStyles(
     className,
     'paragraph',
+    isTruncate ? 'truncate' : '',
     ['color', 'size', 'weight'],
     {
       'is-striked': isStriked,
       'is-inline': isInline,
+      'is-truncate': isTruncate
     }
   );
 
@@ -34,6 +37,7 @@ Paragraph.propTypes = {
   className: PropTypes.string,
   isStriked: PropTypes.bool,
   isInline: PropTypes.bool,
+  isTruncate: PropTypes.bool,
 };
 
 Paragraph.defaultProps = {

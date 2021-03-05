@@ -41,7 +41,7 @@ export const ProductItem = ({
         <div className={getStyles('product-item-content')}>
           <div className={getStyles('product-item-content-title')}>
             <div className="w-full flex-1">
-              <Paragraph size={'sm'}>{productName}</Paragraph>
+              <Paragraph isTruncate={true} size={'sm'}>{productName}</Paragraph>
             </div>
             <Icon className="text-xs cursor-pointer" onClick={() => removeItem() }>clear</Icon>
           </div>
@@ -60,7 +60,7 @@ export const ProductItem = ({
               />
             </div>
             <div className="col-span-2 flex justify-center items-center text-center">
-              <Paragraph size={'sm'} >{price} USD</Paragraph>
+              <Paragraph size={'sm'} >{price}$ COL</Paragraph>
             </div>
           </div>
         </div>
