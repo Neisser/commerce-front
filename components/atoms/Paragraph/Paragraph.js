@@ -13,7 +13,6 @@ export const Paragraph = ({
   isInline,
   isTruncate
 }) => {
-  console.log(isTruncate)
   const classes = getStyles(
     className,
     'paragraph',
