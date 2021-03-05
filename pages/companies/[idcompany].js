@@ -135,16 +135,16 @@ const ProductList = (props) => {
         >
           <li>
             <span className="font-semibold text-gray-800 block">136</span>
-            posts
+            products
           </li>
 
           <li>
             <span className="font-semibold text-gray-800 block">40.5k</span>
-            followers
+            sales
           </li>
           <li>
             <span className="font-semibold text-gray-800 block">302</span>
-            following
+            rate
           </li>
         </ul>
 
