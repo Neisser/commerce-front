@@ -42,7 +42,7 @@ export const MethodPayment = ({ showModal, setShowModal, payload }) => {
                       {
                         description: "Your description",
                         amount: {
-                          value: 500.0,
+                          value: 0.2,
                         },
                       },
                     ],

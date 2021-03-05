@@ -57,6 +57,17 @@ export const FeaturedProducts = ({
 export const PopularCompanies = ({
   companies
 }) => {
+  const [limit, setLimit] = useState(10)
+  const [skip, setSkip] = useState(0)
+  const [companyList, setCompanyList ] = useState([])
+  useEffect(()=>{
+    async function getCompanyList() {
+        const response = await getFeaturedCompanies(limit,skip);
+        console.log({response})
+        setCompanyList(response);
+    }
+    getCompanyList();
+  }, [])
   const srcImage =
     "https://starsandstories.com/wp-content/uploads/2018/07/Adidas-Reviews-about-shoes.png";
   const catalogueItem = {
