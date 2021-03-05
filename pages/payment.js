@@ -11,7 +11,6 @@ import Paragraph from 'atoms/Paragraph';
 import { Card } from '@material-ui/core';
 
 
-
 export const Payment = ({ getStyles }) => {
   return (
       <div className="grid grid-cols-1 h-screen w-full text-justify px-10 items-center justify-items-center	">
@@ -21,10 +20,8 @@ export const Payment = ({ getStyles }) => {
         </div>
 
         {/* Mensaje confirmación */}
-        <div className="text-xl px-4">
-            <p>Su compra ha sido <br/>
-            realizada con éxito
-            </p>
+        <div className="text-lg px-4">
+            <p className='text-justify'>Su compra ha sido realizada con éxito</p>
         </div>
 
         {/* Icono */} 
@@ -34,11 +31,8 @@ export const Payment = ({ getStyles }) => {
 
         {/* Mensaje */}
         <div className="text-sm">
-        <p>Recibirá un email a la dirección <br/>
-            usuario@gmail.com con toda la <br/>
-            informacion sobre su pedido, <br/>
-            muchas gracias.
-            </p>
+          <p>Recibirá un email a la dirección usuario@gmail.com con toda la informacion sobre su pedido, muchas gracias.
+          </p>
         </div>
 
         {/* Boton */}

@@ -8,22 +8,26 @@ import Icon from '@material-ui/core/Icon';
 import Paragraph from 'atoms/Paragraph';
 export const Footer = ({ getStyles }) => {
   return (
-    <footer className={getStyles('footer', 'mt-0', 'py-0', 'text-white')}>
+    <footer className={getStyles('footer')}>
+      {/* Logo */}
+      <div className={getStyles('img')}>
+        <img src="" alt="Logo"/>
+      </div>
       {/* Información */}
-      <div className="py-6 px-20 border-b-2 border-gray-400 ">
-          <p className= 'lg:text-base pb-2 font-bold'>
+      <div className={getStyles('informacion')}>
+          <p className= {getStyles('informacion-p1', 'sm:text-md')}>
             Haz parte de nosotros y amplia tu negocio
           </p>
-          <p className='text-sm'>
+          <p className='text-xs sm:text-sm'>
             Haz <a className='underline font-semibold' href="/registro">clic aquí</a> para registrar tu tienda. <br/>
             Si ya estás registrado, haz <a className='underline font-semibold' href="/for-companies">clic aquí</a> para subir tu catálogo.
           </p>
       </div>
 
       {/* About Clusthers*/}
-      <div className="flex grid grid-cols-2 py-6">
+      <div className="sm:flex py-4 sm:text-left text-center">
         {/* Text */}
-        <div className=" px-20 border-r-2 border-gray-400">
+        <div className="sm:w-1/2">
         <p className='font-semibold text-sm pb-2'>
             About Clusthers
           </p>
@@ -35,15 +39,15 @@ export const Footer = ({ getStyles }) => {
           </p>
         </div>
         {/* Redes sociales */}
-        <div className="px-20">
-          <p className='font-semibold text-sm pb-2'>
+        <div className={getStyles('div-iconos')}>
+          <p className={getStyles('div-iconos-p')}>
               Síguenos en
           </p>
-          <Icon className="justify-items-end inline">email</Icon>
-          <Icon className="justify-items-end">email</Icon> 
-          <div className='pt-4 text-sm'>
+          <Icon>email</Icon>
+          <Icon>email</Icon> 
+          <div className='text-xs'>
           <p>
-            clusthers@gmail.com
+            Email: clusthers@gmail.com
           </p>
         </div> 
         </div>
