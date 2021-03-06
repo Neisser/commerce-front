@@ -26,7 +26,7 @@ export const ProductCard = ({
   return (
 
 
-    <div className="card-content shadow" style={{height:'425px'}}>
+    <div key={key} className="card-content shadow" style={{height:'425px'}}>
       <div className="w-full h-2/3 bg-cover bg-center " style={{ backgroundImage: `url(${srcImage})`}}>
       </div>
       <div className="w-full h-1/3 p-4 flex flex-col justify-between bg-white">
