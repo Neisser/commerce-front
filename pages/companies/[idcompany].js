@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { getCompanyById, getProductsByCompany } from "../../services/companies";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { getCompanyById, getProductsByCompany } from '../../services/companies';
 
 const Company = () => {
   const router = useRouter();
@@ -11,7 +12,7 @@ const Company = () => {
     const { idcompany } = router?.query;
     setCompanyId(idcompany);
     async function getCompanyInfo() {
-      if(!!idcompany){
+      if (!!idcompany) {
         const response = await getCompanyById(idcompany);
         setCompanyInfo(response);
       }
@@ -110,15 +111,24 @@ const MetaInfo = (props) => {
 
 const ProductList = (props) => {
   const { companyInfo, companyId } = props;
-  const [ productList, setProductList ] = useState([])
-  const [ productFilters, setProductFilter ] = useState({colors:[''],sizes:[''],materials:['']})
-  const [ limit, setLimit ] = useState(9)
-  const [ skipt, setSkip ] = useState(0)
+  const [productList, setProductList] = useState([]);
+  const [productFilters, setProductFilter] = useState({
+    colors: [''],
+    sizes: [''],
+    materials: [''],
+  });
+  const [limit, setLimit] = useState(9);
+  const [skipt, setSkip] = useState(0);
   useEffect(() => {
     async function getProductsList() {
-      if(!!companyId) {
-        const response = await getProductsByCompany(companyId,productFilters,limit,skipt);
-        console.log({response})
+      if (!!companyId) {
+        const response = await getProductsByCompany(
+          companyId,
+          productFilters,
+          limit,
+          skipt
+        );
+        console.log({ response });
         setProductList(response);
       }
     }
@@ -181,13 +191,13 @@ const ProductList = (props) => {
         <div className="flex flex-wrap -mx-px md:-mx-3">
           {/* <!-- column --> */}
 
-          {
-            (productList.length > 0 )
-            ? productList.map((item, index) => {
+          {productList.length > 0 ? (
+            productList.map((item, index) => {
               return <ProductCard product={item} key={index} />;
             })
-            : <div> Ouch! no se encontraron productos :( </div>
-          }
+          ) : (
+            <div> Ouch! no se encontraron productos :( </div>
+          )}
         </div>
       </div>
     </>
@@ -196,13 +206,13 @@ const ProductList = (props) => {
 
 const ProductCard = (props) => {
   const { product } = props;
-  console.log({product})
+  console.log({ product });
   return (
     <>
       <div className="w-1/3 p-px md:px-3">
         {/* <!-- post 1--> */}
-        <a href="#">
-          <article className="post bg-gray-100 text-white relative pb-full md:mb-6">
+        <Link href={`/productos/${product._id}`}>
+          <article className="post bg-gray-100 text-white relative pb-full md:mb-6 cursor-pointer">
             {/* <!-- post image--> */}
             <img
               className="w-full h-full left-0 top-0 object-cover"
@@ -232,7 +242,7 @@ const ProductCard = (props) => {
               </div>
             </div>
           </article>
-        </a>
+        </Link>
       </div>
     </>
   );
