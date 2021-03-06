@@ -1,0 +1,16 @@
+.product-detail {
+  display: block;
+  width: 349px;
+  margin: auto;
+}
+
+.product-detail__description {
+  @apply my-4;
+}
+
+.product-detail__add {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  width: 100%;
+}

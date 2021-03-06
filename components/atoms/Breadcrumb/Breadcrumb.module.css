@@ -1,0 +1,18 @@
+.breadcrumb nav {
+  text-align: center;
+}
+
+.breadcrumb li {
+  @apply text-sm inline-block;
+}
+
+.breadcrumb li::before {
+  content: '/';
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.breadcrumb li:first-child::before {
+  content: none;
+  padding-left: 0;
+}
