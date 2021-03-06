@@ -11,7 +11,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* Global CSS */}
-          <title>commerce</title>
+          <title>Clusthers</title>
           <link rel="stylesheet" href="/styles/styles.css" />
           <meta name="description" content="we are the best commerce!" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
