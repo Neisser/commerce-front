@@ -2,6 +2,7 @@ import { useCallback, useState, useEffect } from "react";
 import Icon from "@material-ui/core/Icon";
 import Badge from "@material-ui/core/Badge";
 import PropTypes from "prop-types";
+import Link from 'next/link'
 
 import withStyles from "../../../hocs/withStyles";
 import styles from "./Navbar.module.css";
@@ -85,6 +86,9 @@ export const Navbar = ({ getStyles, setShowModal, showModal, scrollValue }) => {
               className={getStyles()}
               className="lg:items-stretch lg:justify-start mx-10"
             >
+             
+              <Link href="/">
+              <a>
               <svg
                 width="101"
                 height="34"
@@ -136,7 +140,7 @@ export const Navbar = ({ getStyles, setShowModal, showModal, scrollValue }) => {
                   d="M11.1089 24.604C9.63332 24.604 8.2657 24.2494 7.10202 23.6416C6.91008 23.5403 6.74212 23.7936 6.88608 23.9582L10.677 28.0357C10.881 28.2509 11.2169 28.2509 11.4208 28.0357L15.2478 23.9962C15.3917 23.8442 15.2238 23.591 15.0318 23.6796C13.9041 24.2748 12.5485 24.604 11.1089 24.604Z"
                   fill="#77C6C8"
                 />
-              </svg>
+              </svg></a></Link>
             </div>
             <div
               className={getStyles(

@@ -181,9 +181,13 @@ const ProductList = (props) => {
         <div className="flex flex-wrap -mx-px md:-mx-3">
           {/* <!-- column --> */}
 
-          {productList.map((item, index) => {
-            return <ProductCard product={item} key={index} />;
-          })}
+          {
+            (productList.length > 0 )
+            ? productList.map((item, index) => {
+              return <ProductCard product={item} key={index} />;
+            })
+            : <div> Ouch! no se encontraron productos :( </div>
+          }
         </div>
       </div>
     </>
