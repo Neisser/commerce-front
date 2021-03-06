@@ -11,7 +11,7 @@ export const Paragraph = ({
   className,
   isStriked,
   isInline,
-  isTruncate
+  isTruncate,
 }) => {
   const classes = getStyles(
     className,
@@ -21,7 +21,7 @@ export const Paragraph = ({
     {
       'is-striked': isStriked,
       'is-inline': isInline,
-      'is-truncate': isTruncate
+      'is-truncate': isTruncate,
     }
   );
 

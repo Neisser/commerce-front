@@ -12,9 +12,10 @@ export const Input = ({
   isInline,
   onChange,
   placeholder,
+  className,
 }) => (
   <input
-    className={getStyles('input', {
+    className={getStyles(className, 'input', {
       'is-inline': isInline,
     })}
     type={type}
@@ -25,6 +26,7 @@ export const Input = ({
 );
 
 Input.propTypes = {
+  className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   getStyles: PropTypes.func.isRequired,
   type: PropTypes.oneOf(options.types),
