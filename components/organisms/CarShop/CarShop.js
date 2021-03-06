@@ -58,9 +58,9 @@ export const CarShop = ({ setShowModal, showModal }) => {
   }
 
   const handleTotal = (_products) => {
-    const total = _products
+    const total = (_products ?? [])
     .map((product) => {
-      const price = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock).unit_price
+      const price = product?.prices?.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock)?.unit_price ?? 0
       return (price * product.count)
     })
     .reduce((a, b) => a + b);
@@ -70,13 +70,13 @@ export const CarShop = ({ setShowModal, showModal }) => {
   const handleButtonPay = () => {
     const payload = {
       details: products.map( product => {
-        const unitPrice = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock).unit_price
+        const unitPrice = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock)?.unit_price ?? 0;
         return ({
           productId: product.id,
           detailsProduct: [
             {
               quantity:product.count,
-              unit_price: unitPrice,
+              unit_price: unitPrice ?? 0,
               color: 'azul',
               size: 'L',
               material: 'poliester',
@@ -110,7 +110,7 @@ export const CarShop = ({ setShowModal, showModal }) => {
         <>
           {
             products.map((product) => {
-              const price = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock).unit_price
+              const price = product.prices.find(prices => prices.min_stock >= product.count || product.count <= prices.max_stock)?.unit_price ?? 0;
               return (
                   <ProductItem
                     productName={product.name}

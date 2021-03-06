@@ -1,0 +1,60 @@
+@font-face {
+  font-family: Google;
+  src: url(../fonts/titilium/TitilliumWeb-Light.ttf);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Google;
+  src: url(../fonts/titilium/TitilliumWeb-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Google;
+  src: url(../fonts/titilium/TitilliumWeb-SemiBold.ttf);
+  font-weight: 500 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Google;
+  src: url(../fonts/titilium/TitilliumWeb-Bold.ttf);
+  font-weight: 700 900;
+  font-style: normal;
+}
+
+body,
+html {
+  font-family: Google !important;
+}
+
+.theme-light {
+  --bg-background-primary: #ffffff;
+  --bg-background-second: #e5e5e5;
+  --bg-background-ternary: #e5e5e5;
+}
+
+.theme-dark {
+  --bg-background-primary: #09132d;
+  --bg-background-second: #192543;
+  --bg-background-ternary: #32516d;
+}
+
+.general-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f8f9fb;
+}
+
+
+
+.landing-button {
+  background-color: #07AFBC;
+  font-size: 16px;
+  margin-top: 1.875rem;
+  @apply text-white py-2 px-5 rounded-full;
+}

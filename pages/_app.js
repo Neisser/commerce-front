@@ -1,5 +1,5 @@
 // import App from 'next/app'
-import React, { useCallback, useState, useEffect} from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { tap } from 'rxjs/operators';
 
 // import DexieObs from 'dexie-observable';
@@ -12,17 +12,22 @@ import MethodPayment from 'organisms/MethodPayment';
 
 // Services
 
-import { subjectPayObservable } from 'services/car-shop'
+import { subjectPayObservable } from 'services/car-shop';
+import 'public/styles/styles.css';
 
 
 // Import global style tailwidcss. Documentation: https://tailwindcss.com/
 import 'tailwindcss/tailwind.css';
-import styles from '../assets/styles/styles.module.css';
 export default function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState('light');
   const [ showModalCarShop, setShowModalCarShop ] = useState(false);
   const [ showModalMethodPayment, setShowModalMethodPayment ] = useState(false);
   const [ payload, setPayload ] = useState()
+
+  const contentRef = useRef();
+
+  const [scrollValue, setScrollValues] = useState(0);
+
 
   useEffect(() => {
     subjectPayObservable.pipe(
@@ -33,6 +38,10 @@ export default function MyApp({ Component, pageProps }) {
       })
     ).subscribe()
   }, [])
+
+  const listenScrollEvent = (e) => {
+    setScrollValues(contentRef.current.scrollTop);
+  }
 
   const handlerDarkMode = useCallback(
     (value) => {
@@ -45,15 +54,17 @@ export default function MyApp({ Component, pageProps }) {
     <React.Fragment>
       <div
         className={`${
-          styles[`theme-${theme}`]
-        } flex flex-col max-h-screen bg-background-primary`}
-      >
+          `theme-${theme}`
+        } flex flex-col max-h-screen bg-background-primary overflow-x-hidden`}
+      > 
+        {/* <div style={{width: '310px', height: '181px', backgroundColor:'#07AFBC'}}></div> */}
         <Navbar
           onChange={handlerDarkMode}
           showModal={showModalCarShop}
           setShowModal={setShowModalCarShop}
+          scrollValue={scrollValue}
         />
-        <div className="overflow-y-scroll flex-1">
+        <div onScroll={listenScrollEvent} className="overflow-y-scroll flex-1" ref={contentRef}>
           <MethodPayment showModal={showModalMethodPayment} setShowModal={setShowModalMethodPayment} payload={payload}/>
           <CarShop showModal={showModalCarShop} setShowModal={setShowModalCarShop}/>
           <Component {...pageProps} />
