@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import Link from 'next/link'
 // Atoms
 import Paragraph from "atoms/Paragraph";
 
@@ -44,8 +44,8 @@ export const FeaturedProducts = ({
       </Paragraph>
       <div className="grid grid-cols-3 gap-12">
         {mapProducts.map((product, i) => (
-          <section className="col-span-3 lg:col-span-1 md:col-span-1 cursor-pointer" onClick={() => addProductInIndexDb(product)}>
-            <ProductCard key={`i-${i}`} {...product} />
+          <section key={`i-${i}`}  className="col-span-3 lg:col-span-1 md:col-span-1 cursor-pointer" onClick={() => addProductInIndexDb(product)}>
+            <ProductCard key={`i-${i}`}  {...product} />
           </section>
         ))}
       </div>
@@ -57,6 +57,18 @@ export const FeaturedProducts = ({
 export const PopularCompanies = ({
   companies
 }) => {
+  const [limit, setLimit] = useState(10)
+  const [skip, setSkip] = useState(0)
+  const [companyList, setCompanyList ] = useState([])
+  const url = (idcompany) => `/companies/${idcompany}`
+  useEffect(()=>{
+    async function getCompanyList() {
+        const response = await getFeaturedCompanies(limit,skip);
+        console.log({responsesss:response})
+        setCompanyList(response);
+    }
+    getCompanyList();
+  }, [])
   const srcImage =
     "https://starsandstories.com/wp-content/uploads/2018/07/Adidas-Reviews-about-shoes.png";
   const catalogueItem = {
@@ -70,21 +82,22 @@ export const PopularCompanies = ({
         Marcas destacadas
       </Paragraph>
       <div className="flex space-x-3.5 felx-row overflow-x-auto">  
-        <div className={'rounded-md flex items-end p-4 bg-center bg-cover'} style={{minWidth: '279px', minHeight: '190px', backgroundImage: 'url(https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)'}}>
-          <Paragraph size={"2xl"} weight={"bold"} color="inverted">
-            Nike
-          </Paragraph>
-        </div>
-        <div className={'rounded-md flex items-end p-4 bg-center bg-cover'} style={{minWidth: '279px', minHeight: '190px', backgroundImage: 'url(https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)'}}>
-          <Paragraph size={"2xl"} weight={"bold"} color="inverted">
-            Nike
-          </Paragraph>
-        </div>
-        <div className={'rounded-md flex items-end p-4 bg-center bg-cover'} style={{minWidth: '279px', minHeight: '190px', backgroundImage: 'url(https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)'}}>
-          <Paragraph size={"2xl"} weight={"bold"} color="inverted">
-            Nike
-          </Paragraph>
-        </div>
+        {
+          companyList.map((item, index)=>{
+            return(
+              <Link key={'i-'+index} href={url(item?._id)}>
+                <a key={'i-'+index}>
+                  <div key={'i-'+index} className={'rounded-md flex items-end p-4 bg-center bg-cover'} style={{minWidth: '279px', minHeight: '190px', backgroundImage: `url(${item?.profile_picture})`}}>
+                    <Paragraph key={'i-'+index} size={"2xl"} weight={"bold"} color="inverted">
+                      {item?.social_reason}
+                    </Paragraph>
+                  </div>
+                </a>
+              </Link >
+            )
+          })
+        }
+
       </div>
       {/* <CatalogueItem {...catalogueItem} className={"bg-gray-200"} /> */}
     </section>
@@ -111,7 +124,7 @@ export const Landing = () => {
   }
 
   return (
-    <div className="px-8 space-y-6">
+    <div className="px-8 space-y-6 mb-16">
       <Begin />
       <PopularCompanies compoanies={companies} />
       <FeaturedProducts products={products} />

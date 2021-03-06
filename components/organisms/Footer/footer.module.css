@@ -3,7 +3,7 @@
 }
 
 .informacion {
-  @apply py-4 border-b-2 border-gray-400 sm:text-left text-center;
+  @apply py-4 border-b-2 border-gray-400 text-left text-lg;
 }
 
 .informacion-p1 {
@@ -11,7 +11,7 @@
 }
 
 .img {
-  @apply pt-4;
+  @apply pt-4 items-start;
 }
 
 .div-iconos{
@@ -20,4 +20,8 @@
 
 .div-iconos-p{
   @apply pt-4 sm:border-t-0 sm:pt-0 border-t-2 border-gray-400 font-semibold text-sm sm:pb-2
+}
+
+.dark-background {
+  background-color: #042A2D;
 }
